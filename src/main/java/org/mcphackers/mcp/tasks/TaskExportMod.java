@@ -133,7 +133,7 @@ public class TaskExportMod extends TaskStaged {
 
 					log("Created mod JAR: " + modJar.getFileName());
 				} else {
-					addMessage("No modified classes found for " + localSide.name);
+					addMessage("No modified classes found for " + localSide.name, WARNING);
 				}
 			}
 		}
@@ -158,7 +158,7 @@ public class TaskExportMod extends TaskStaged {
 			side.name,
 			mcp.getCurrentVersion() != null ? mcp.getCurrentVersion().id : "unknown"
 		);
-		Files.writeString(infoFile, info);
+		Files.write(infoFile, info.getBytes(java.nio.charset.StandardCharsets.UTF_8));
 
 		// Cleanup state file on success
 		Files.deleteIfExists(stateFile);
@@ -178,7 +178,7 @@ public class TaskExportMod extends TaskStaged {
 		props.setProperty("side", side.name);
 		props.setProperty("timestamp", LocalDateTime.now().toString());
 
-		try (var out = Files.newOutputStream(stateFile)) {
+		try (java.io.OutputStream out = Files.newOutputStream(stateFile)) {
 			props.store(out, "Export state - DO NOT DELETE (used for crash recovery)");
 		}
 	}
@@ -188,7 +188,7 @@ public class TaskExportMod extends TaskStaged {
 	 */
 	private void recoverFromState(Path stateFile) throws IOException {
 		Properties props = new Properties();
-		try (var in = Files.newInputStream(stateFile)) {
+		try (java.io.InputStream in = Files.newInputStream(stateFile)) {
 			props.load(in);
 		}
 
