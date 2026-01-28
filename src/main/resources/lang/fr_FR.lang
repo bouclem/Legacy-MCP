@@ -79,6 +79,8 @@ task.applypatch = Appliquer un correctif
 task.applypatch.desc = Applique un correctif à partir du répertoire des correctifs
 task.updatemcp = Mettre à jour RetroMCP
 task.updatemcp.desc = Vérifie les mises à jour
+task.exportmod = Exporter le Mod
+task.exportmod.desc = Exporte en JAR publiable avec sauvegarde automatique
 task.noDesc = Aucune description fournie
 
 task.stage.idle = Inactif
@@ -101,6 +103,8 @@ task.stage.gathermd5 = Collecte des hachages MD5
 task.stage.updatemd5 = Mise à jour des MD5
 task.stage.download = Téléchargement : %s
 task.stage.workspace = Configuration de l'espace de travail
+task.stage.package = Empaquetage du mod
+task.stage.finalize = Finalisation de l'export
 
 task.param.debug = Afficher des informations supplémentaires
 task.param.side = Définir le côté

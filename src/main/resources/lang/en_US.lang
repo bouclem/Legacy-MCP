@@ -81,6 +81,8 @@ task.updatemcp = Update RetroMCP
 task.updatemcp.desc = Check for updates
 task.mergemappings = Merge mappings
 task.mergemappings.desc = Merges mappings into V2 format
+task.exportmod = Export Mod
+task.exportmod.desc = Export as a publishable mod JAR with auto-backup
 task.noDesc = No description provided
 
 task.stage.idle = Idle
@@ -103,6 +105,8 @@ task.stage.gathermd5 = Gathering MD5 hashes
 task.stage.updatemd5 = Updating MD5
 task.stage.download = Downloading: %s
 task.stage.workspace = Setting up workspace
+task.stage.package = Packaging mod
+task.stage.finalize = Finalizing export
 
 task.param.debug = Display additional info
 task.param.side = Set side

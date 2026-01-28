@@ -16,6 +16,7 @@ import org.mcphackers.mcp.tasks.TaskCleanup;
 import org.mcphackers.mcp.tasks.TaskCreatePatch;
 import org.mcphackers.mcp.tasks.TaskDecompile;
 import org.mcphackers.mcp.tasks.TaskDownloadUpdate;
+import org.mcphackers.mcp.tasks.TaskExportMod;
 import org.mcphackers.mcp.tasks.TaskMergeMappings;
 import org.mcphackers.mcp.tasks.TaskRecompile;
 import org.mcphackers.mcp.tasks.TaskReobfuscate;
@@ -161,6 +162,18 @@ public class TaskMode {
 			.setName("mergemappings")
 			.setTaskClass(TaskMergeMappings.class)
 			.setProgressBars(false)
+			.build();
+	public static TaskMode EXPORT_MOD = new TaskModeBuilder()
+			.setName("exportmod")
+			.setTaskClass(TaskExportMod.class)
+			.addRequirement((mcp, side) -> Files.isReadable(MCPPaths.get(mcp, MCPPaths.SOURCE, side)))
+			.setParameters(new TaskParameter[]{
+					TaskParameter.SOURCE_VERSION,
+					TaskParameter.TARGET_VERSION,
+					TaskParameter.JAVA_HOME,
+					TaskParameter.JAVAC_ARGS,
+					TaskParameter.SIDE
+			})
 			.build();
 	public static TaskMode EXIT = new TaskModeBuilder()
 			.setName("exit")
